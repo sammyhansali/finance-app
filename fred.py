@@ -73,7 +73,7 @@ def category():
 
     # Parameters
     file_type = 'json'
-    category_id = 33913
+    category_id = 1
     params = {
         'api_key': API_KEY,
         'file_type': file_type,
@@ -110,13 +110,105 @@ def category_children():
     # Response Handling
     return response_handling(response, 'categories')
 
+def category_series():
+    '''
+    Get category data from FRED API.
+    '''
+    # Endpoint
+    endpoint = 'category/series'
+
+    # Parameters
+    file_type = 'json'
+    category_id = 1
+    params = {
+        'api_key': API_KEY,
+        'file_type': file_type,
+        'category_id': category_id,
+    }
+
+    # Request
+    response = requests.get(BASE_URL + endpoint, params=params)
+
+    # Response Handling
+    return response_handling(response, 'seriess')
+
+def releases():
+    '''
+    Get category data from FRED API.
+    '''
+    # Endpoint
+    endpoint = 'releases'
+
+    # Parameters
+    file_type = 'json'
+    params = {
+        'api_key': API_KEY,
+        'file_type': file_type,
+    }
+
+    # Request
+    response = requests.get(BASE_URL + endpoint, params=params)
+
+    # Response Handling
+    return response_handling(response, 'releases')
+
+def release_series():
+    '''
+    Get category data from FRED API.
+    '''
+    # Endpoint
+    endpoint = 'release/series'
+
+    # Parameters
+    file_type = 'json'
+    release_id = 10
+    params = {
+        'api_key': API_KEY,
+        'file_type': file_type,
+        'release_id': release_id,
+    }
+
+    # Request
+    response = requests.get(BASE_URL + endpoint, params=params)
+
+    # Response Handling
+    return response_handling(response, 'seriess')
+
+def sources():
+    '''
+    Get category data from FRED API.
+    '''
+    # Endpoint
+    endpoint = 'sources'
+
+    # Parameters
+    file_type = 'json'
+    params = {
+        'api_key': API_KEY,
+        'file_type': file_type,
+    }
+
+    # Request
+    response = requests.get(BASE_URL + endpoint, params=params)
+
+    # Response Handling
+    return response_handling(response, 'sources')
+
 if __name__ == '__main__':
     obs = observations()
     cat = category()
     catc = category_children()
+    cats = category_series()
+    rel = releases()
+    rels = release_series()
+    src = sources()
 
-    print(obs)
-    print(cat)
-    print(catc)
+    print(f'Shape for obs:\t {obs.shape}')
+    print(f'Shape for cat:\t {cat.shape}')
+    print(f'Shape for catc:\t {catc.shape}')
+    print(f'Shape for cats:\t {cats.shape}')
+    print(f'Shape for rel:\t {rel.shape}')
+    print(f'Shape for rels:\t {rels.shape}')
+    print(f'Shape for src:\t {src.shape}')
 
-    plot_ts(obs, 'test.png')
+    # plot_ts(obs, 'test.png')
