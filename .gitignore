@@ -12,3 +12,4 @@ wheels/
 # Other
 api_keys.txt
 charts/
+logs/
