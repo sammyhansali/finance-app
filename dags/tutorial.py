@@ -22,7 +22,7 @@ with DAG(
     schedule = timedelta(days=1),
     start_date = datetime(2021,1,1),
     catchup = False,
-    tags = ["example-tag", "daddywuzhere;D"],
+    tags = ["example-tag", "daddywuzhere;D", "newTAG bro"],
 ) as dag:
 
     t1 = BashOperator(
